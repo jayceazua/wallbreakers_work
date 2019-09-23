@@ -43,7 +43,7 @@ class Solution:
         x = n
 
         while x > 0:
-            x, d = divmod(x, 10)
+            x, d = divmod(x, 10) # we 
             if d == 0 or n % d > 0:
                 return False
         return True
