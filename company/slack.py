@@ -41,7 +41,7 @@ def solution(A, K, L):
     alice = get_all_combos(A, K)
     bob = get_all_combos(A, L)
 
-    return max(get_max_sum(alice, bob))
+    return get_max_sum(alice, bob)
 
     # return get_max_sum(alice, bob)
 
@@ -61,7 +61,7 @@ def get_max_sum(alice, bob):
             if len(alice_combo & bob_combo) != 0:
                 continue
             possible_sum.append(alice_total + bob_total)
-    return possible_sum
+    return max(possible_sum)
 
 
 # get all combinations
