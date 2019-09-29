@@ -32,6 +32,11 @@ Output: true
 
 class Solution:
     def isValid(self, s: str) -> bool:
+        # order matters 
+        # we need to see the corresponding character 
+        # 
+
+
 
         stack = []
         # create a O(1) look up
@@ -52,3 +57,30 @@ class Solution:
 
         # if there is something still in the stack return false
         return len(stack) == 0
+
+
+# def is_Valid(s: str) -> bool:
+
+#     if len(s) % 2 == 0:
+#         return False
+
+#     stack = []  # }
+
+#     for char in s:
+#         # check if it is a opening bracket
+#         if char in "([{":
+#             stack.append(char)
+
+#         elif char == ")" and len(stack) != 0 and stack[-1] == "(":
+#             stack.pop()
+
+#         elif char == "}" and len(stack) != 0 and stack[-1] == "{":
+#             stack.pop()
+
+#         elif char == "]" and len(stack) != 0 and stack[-1] == "[":
+#             stack.pop()
+
+#         else:
+#             return False
+
+#     return len(stack) == 0
