@@ -18,16 +18,15 @@ class Solution:
     def reverseVowels(self, s: str) -> str:
         # set of vowels for constant lookup
         lookup_vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
-        "leetcode"
         # vowel : indices set
         vowels = []
         # vowels 1->e, 2->e, 5->0, 7->e
-        for index, letter in enumerate(s):
+        for index, letter in enumerate(s): # O(n)
             if letter in lookup_vowels:
                 vowels.append((index, letter))
-        s = list(s)
-        for index, value in enumerate(vowels):
-            s.pop(value[0])
-            s.insert(value[0], vowels[-index-1][1])
+        s = list(s) # O(n)
+        for index, value in enumerate(vowels): # O(n^3)
+            s.pop(value[0]) # O(n)
+            s.insert(value[0], vowels[-index-1][1]) # O(n)
 
-        return "".join(s)
+        return "".join(s) # O(n)
