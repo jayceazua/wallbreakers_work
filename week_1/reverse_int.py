@@ -26,10 +26,10 @@ class Solution:
             is_negative = True
             x = abs(x)
 
-        reversed_num = 0
+        reversed_num = 0 # 3
 
         while x != 0:
-            reversed_num = (reversed_num * 10) + (x % 10)
+            reversed_num = (reversed_num * 10) + (x % 10) # 
             x = x // 10
 
         # corner/ edge cases
