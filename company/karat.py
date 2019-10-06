@@ -112,7 +112,6 @@ def all_open_positions(board):
 
 def find_legal_moves(board, start_position):
     answer = []
-#     check index out of range for different cooridinates.abs
 
     if start_position[0] != 0:
         top = board[start_position[0] - 1][start_position[1]]
@@ -145,7 +144,6 @@ print(all_open_positions(board1))
 if __name__ == "__main__":
     #     generate all open positions
     open_positions = all_open_positions(board1)
-#
 
 #     print(find_legal_moves(board, start1))
 #     print(find_legal_moves(board, start2))
@@ -154,4 +152,3 @@ if __name__ == "__main__":
 #     print(find_legal_moves(board, start5))
 #     print(find_legal_moves(board, start6))
 #     print(find_legal_moves(board, start7))
-#     print(find_legal_moves(board, start1))
