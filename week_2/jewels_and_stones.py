@@ -22,11 +22,11 @@ from collections import Counter
 
 class Solution:
     def numJewelsInStones(self, J: str, S: str) -> int:
-        jewels = Counter(J)
-        stones = Counter(S)
+        jewels = Counter(J) # O(n)
+        stones = Counter(S) # O(n)
         count = 0
 
-        for jewel in jewels:
+        for jewel in jewels: # O(k)
             count += stones[jewel]
 
         return count
