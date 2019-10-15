@@ -19,7 +19,7 @@ def dailyTemperatures(dailyTemps):
   # list of days to wait -> result same size of dailyTemps
   result = [0] * len(dailyTemps)
   # create a stack
-  stack = deque()
+  stack = deque() # 2 3 4 5 
   # loop over dailyTemps by index
   for index, current_temp in enumerate(dailyTemps):
     # while there's something in the stack and current temp is < top of stack
