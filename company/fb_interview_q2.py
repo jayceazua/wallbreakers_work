@@ -45,15 +45,6 @@ def find_battleship(grid_size):
           coordinates.append((x+1, y))
           coordinates.append((x+2, y))
         return tuple(coordinates)
-    
-    
-        
-  
-  
-
-
-
-
 
 def bomb_location(x, y):
   # stores user bombing into a tuple
