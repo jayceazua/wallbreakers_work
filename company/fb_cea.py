@@ -36,6 +36,12 @@ from collections import Counter
 def opti_unique_char(s, k):
 
     # add edge cases
+    if k == 0:
+        return
+        
+    if k == 1:
+        return len(s)
+
     if k > len(s):
         return
 
