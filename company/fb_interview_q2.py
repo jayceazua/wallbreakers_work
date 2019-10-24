@@ -29,7 +29,6 @@
 
 def find_battleship(grid_size):
   coordinates = []
-  
   # brute force solution 
   for x in range(grid_size): # O(n^2)
     for y in range(grid_size):
