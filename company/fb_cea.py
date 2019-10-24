@@ -5,8 +5,7 @@ Given a string and an integer k, print the of count of distinct characters in al
 
 Example:
 Input:  
-        0 1 2 3  4 5 6
-  s = "{a b a c} d b c"
+  s = "abacdbc"
   k = 4
 
 Output:
@@ -17,8 +16,12 @@ Output:
 
 
 Edge Cases:
-K > len(s) -> print nothing
+K > len(s) -> nothing
+K = 0 -> nothing
+K = 1 -> len(s)
+K == len(s) -> len(Counter(s))
 
+hashtable example
 
 { 
     'c' : 2,
@@ -35,15 +38,12 @@ from collections import Counter
 # optimial solution
 def opti_unique_char(s, k):
 
-    # add edge cases
-    if k == 0:
+    # edge cases
+    if k == 0 or k > len(s):
         return
         
     if k == 1:
         return len(s)
-
-    if k > len(s):
-        return
 
     if k == len(s):
         print(len(Counter(s)))
