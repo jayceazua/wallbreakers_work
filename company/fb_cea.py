@@ -80,4 +80,4 @@ def get_unique_char(s, k):
         # O(n) (a,b,c) -> (b, a, c, d) -> (a, c, d, b) -> (c, d, b, c)
         unique = set(s[index: index + k])
 
-        print(len(unqiue))  # 3, 4, 4, 3
+        print(len(unique))  # 3, 4, 4, 3
