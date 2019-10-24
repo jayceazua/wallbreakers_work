@@ -33,7 +33,6 @@ def find_battleship(grid_size):
   # brute force solution 
   for x in range(grid_size): # O(n^2)
     for y in range(grid_size):
-
       if bomb_location(x, y):
         coordinates.append((x, y))
         # no point in going left or up since I already went from the upper left corner...
@@ -45,9 +44,8 @@ def find_battleship(grid_size):
         if (y != grid_size - 2) and bomb_location(x+1, y):
           coordinates.append((x+1, y))
           coordinates.append((x+2, y))
-
         return tuple(coordinates)
-    # add x coordinates where the ship is not found
+    
     
         
   
