@@ -62,7 +62,7 @@ def opti_unique_char(s, k):
 
         # remove the first char of the window
         if current_window[s[index]] == 1:
-            del current_window[s[index]]
+            del current_window[s[index]] 
 
         else:
             current_window[s[index]] -= 1
@@ -85,7 +85,6 @@ def bru_unique_char(s, k):
 
     if k == len(s):
         print(len(set(s)))
-
 
     for index in range(len(s) - k):  # O(n)
         # O(n) (a,b,c) -> (b, a, c, d) -> (a, c, d, b) -> (c, d, b, c)
