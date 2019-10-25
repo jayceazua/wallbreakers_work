@@ -15,15 +15,12 @@ Output:
 3      //   "cdbc"
 
 
-
-
-
 ----------
 Edge Cases:
 K > len(s) -> nothing
 ---
 K = 0 -> nothing
-K = 1 -> len(s)
+K = 1 -> 1 * len(s)
 K == len(s) -> len(Counter(s))
 
  - what if K is negative,
@@ -51,7 +48,8 @@ def opti_unique_char(s, k):
         return
         
     if k == 1:
-        return len(s)
+        for _ in range(len(s)):
+            print(1)
 
     if k == len(s):
         print(len(Counter(s)))
@@ -79,12 +77,7 @@ def opti_unique_char(s, k):
 
 # brute force
 def bru_unique_char(s, k):
-
-    if k > len(s):
-        return
-
-    if k == len(s):
-        print(len(set(s)))
+    # edge cases here
 
     for index in range(len(s) - k):  # O(n)
         # O(n) (a,b,c) -> (b, a, c, d) -> (a, c, d, b) -> (c, d, b, c)
