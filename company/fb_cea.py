@@ -21,6 +21,9 @@ K = 0 -> nothing
 K = 1 -> len(s)
 K == len(s) -> len(Counter(s))
 
+ - what if K is negative,
+ - a float; do we get the ceiling or floor of the float?
+
 hashtable example
 
 { 
@@ -39,7 +42,7 @@ from collections import Counter
 def opti_unique_char(s, k):
 
     # edge cases
-    if k == 0 or k > len(s):
+    if k <= 0 or k > len(s):
         return
         
     if k == 1:
@@ -79,7 +82,6 @@ def get_unique_char(s, k):
     if k == len(s):
         print(len(set(s)))
 
-    # unique_char = set()
 
     for index in range(len(s) - k):  # O(n)
 
