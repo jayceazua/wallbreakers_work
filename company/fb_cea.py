@@ -68,14 +68,13 @@ def opti_unique_char(s, k):
             current_window[s[index + k]] += 1
 
         else:
-            current_window[s[index+k]] = 1
+            current_window[s[index + k]] = 1
 
         print(len(current_window))
 
 
 # brute force
-
-def get_unique_char(s, k):
+def bru_unique_char(s, k):
 
     if k > len(s):
         return
@@ -85,8 +84,6 @@ def get_unique_char(s, k):
 
 
     for index in range(len(s) - k):  # O(n)
-
         # O(n) (a,b,c) -> (b, a, c, d) -> (a, c, d, b) -> (c, d, b, c)
         unique = set(s[index: index + k])
-
         print(len(unique))  # 3, 4, 4, 3
