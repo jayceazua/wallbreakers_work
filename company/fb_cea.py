@@ -17,6 +17,7 @@ Output:
 
 Edge Cases:
 K > len(s) -> nothing
+---
 K = 0 -> nothing
 K = 1 -> len(s)
 K == len(s) -> len(Counter(s))
