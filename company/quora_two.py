@@ -18,7 +18,7 @@ For arr = [1, 2, 4, -1, 6, 1], k = 3, and s = 6, the output should be 3.
   - So the answer is 3
 
 
-Input/ Out
+Input/ Output
 
  - [execution time limit] 4s
 
