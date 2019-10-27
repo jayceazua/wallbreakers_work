@@ -108,11 +108,11 @@ INPUT/ OUTPUT
       m.length is odd
       m.length = m[i].length
       -100 <= m[i][j] <= 100
-- [input] integer k
+ - [input] integer k
     How many times the given matrix m needs to be rotated.
     Guaranteed Constraints
       1 <= k <= 4
 
-- [output] array.array.integer 
+ - [output] array.array.integer 
     Matrix m after applying k rotations
 """
