@@ -53,6 +53,7 @@ s = 6
 def foo_bar(arr, k, s): # O(n*k)
   window = 1
   count = 0
+  
   while window <= k:
 
     for index in range(len(arr)):
