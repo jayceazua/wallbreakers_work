@@ -44,3 +44,26 @@ Input/ Output
  - The number of the contiguous subarray with the given sum.
 
 """
+
+
+arr = [1, 2, 4, -1, 6, 1]
+k = 3
+s = 6
+
+def foo_bar(arr, k, s): # O(n*k)
+  window = 1
+  count = 0
+  while window <= k:
+
+    for index in range(len(arr)):
+      total = sum(arr[index:window+index])
+
+      if total == s:
+        count += 1
+
+    window += 1
+
+  return count 
+
+
+print(foo_bar(arr, k, s))
