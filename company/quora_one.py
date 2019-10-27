@@ -38,3 +38,29 @@ Constraints:
 
 """
 
+
+def string_sum(a, b):
+  total = ""
+
+  while len(a) != len(b):
+    
+    if len(a) > len(b):
+      # add zero to string b
+      b = "0" + b
+    elif len(a) < len(b):
+      # add zeros to string a
+      a = "0" + a
+
+  if len(a) == len(b):
+    
+    for num1, num2 in zip(a, b):
+      total += str(int(num1) + int(num2)) 
+  
+  return total
+
+a = "13"
+b = "1234567"
+print(string_sum(a, b)) # 19 
+
+
+

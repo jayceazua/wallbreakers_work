@@ -38,8 +38,6 @@ hashtable example
 
 
 from collections import Counter
-
-
 # optimial solution
 def opti_unique_char(s, k):
 

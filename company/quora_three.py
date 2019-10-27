@@ -68,3 +68,47 @@ Input/ output
  - The sum of all distinct integers within the k x k squares with the maximal sum 
 
 """
+
+
+
+m = [
+    [1, 0, 1, 5, 6],
+    [3, 3, 0, 3, 3],
+    [2, 9, 2, 1, 2],
+    [0, 2, 4, 2, 0],
+]
+
+k = 2
+
+def foo_bar(m, k):
+  max_box = 0
+  all_values = set()
+  for i in range(len(m) - k + 1):
+    for j in range(len(m[i]) - k + 1):
+      max_value, values = sum_submatrix(m, i, j, i+k, j+k)
+
+      if max_value > max_box:
+        max_box = max_value
+        all_values.clear()
+        for v in values:
+          all_values.add(v)
+      elif max_value == max_box:
+        for v in values:
+          all_values.add(v)
+  
+  return sum(all_values)
+
+
+def sum_submatrix(box, x1, y1, x2, y2):
+  total = 0
+  values = []
+  for i in range(x1, x2):
+    for j in range(y1, y2):
+      total += box[i][j]
+      values.append(box[i][j])
+
+  return (total, values)
+
+
+
+foo_bar(m, k)
