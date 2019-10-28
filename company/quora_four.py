@@ -60,7 +60,7 @@ k = 1
 [
   [1, 16, 11, 6, 5],
   [22, 7, 12, 9, 2],
-  [23, 18, 13,   , 8, 3],
+  [23, 18, 13, 8, 3],
   [24, 17, 14, 19, 4],
   [21, 20, 15,  10, 25],
 ]
@@ -108,6 +108,7 @@ INPUT/ OUTPUT
       m.length is odd
       m.length = m[i].length
       -100 <= m[i][j] <= 100
+
  - [input] integer k
     How many times the given matrix m needs to be rotated.
     Guaranteed Constraints
@@ -116,3 +117,78 @@ INPUT/ OUTPUT
  - [output] array.array.integer 
     Matrix m after applying k rotations
 """
+
+
+def rotate_by_k(m, k):
+    # jayce
+    cross_diagonals = get_cross_diagonals(m)
+
+    rotate_count = 0
+    # Sunny's rotate problem
+    while rotate_count < k:
+      rotate_clockwise(m)
+      rotate_count += 1
+
+    # put back the cross diagonals
+    put_cross_values_back(m, cross_diagonals)
+
+    # return the new matrix rotated by k
+    return m
+
+
+# Jayce's problem to solve
+def get_cross_diagonals(m):
+    cross = []
+
+    for i in range(len(m)):
+      # left to right
+        cross.append((m[i][i], (i, i)))
+        # right to left
+        cross.append((m[i][len(m)-i-1], (i, len(m)-i-1)))
+
+    return cross
+
+
+# Sunny's problem to solve
+def rotate_clockwise(m):
+    """
+    90 degree turn clockwise
+    """
+    row = len(m)
+    col = row
+
+    # gets all elements in the same the columns and joins them together
+    for i in range(row):
+        for j in range(col):
+
+            m[i][j], m[j][i] = m[j][i], m[i][j]
+
+    for row in m:
+        row.reverse()  # using reversed method reverses the state of the input
+
+def rotate_counter_clockwise(m):
+  pass
+
+# put back the cross diagonals
+def put_cross_values_back(m, cross_diagonals):
+    for cross_diagonal in cross_diagonals:
+        value = cross_diagonal[0]
+        coordinate_i = cross_diagonal[1][0]
+        coordinate_j = cross_diagonal[1][1]
+
+        m[coordinate_i][coordinate_j] = value
+
+
+if __name__ == "__main__":
+    m = [
+        [1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25],
+    ]
+    k = 4
+
+    rotate_by_k(m, k)
+
+    print(m)
