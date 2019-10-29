@@ -5,7 +5,7 @@ Given a string and an integer k, print the of count of distinct characters in al
 
 Example:
 Input:  
-  s = "abacdbcdbc"
+  s = "a{bacd}bcdbc"
   k = 4
 
 Output:
