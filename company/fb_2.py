@@ -19,15 +19,15 @@ def find_num(nums, target):
   # return None
 
   # naive solution 4
-  nums_hash = {}
-  for index, num in enumerate(nums): # O(n) runtime and space
-    nums_hash.setdefault(nums, index)
-  if nums_hash.get(target, False): # O(1) runtime and space
-    return nums_hash[target]
-  return None
+  # nums_hash = {}
+  # for index, num in enumerate(nums): # O(n) runtime and space
+  #   nums_hash.setdefault(nums, index)
+  # if nums_hash.get(target, False): # O(1) runtime and space
+  #   return nums_hash[target]
+  # return None
 
   # Optimized Solution - using binary search
-
+  
 
 
 
