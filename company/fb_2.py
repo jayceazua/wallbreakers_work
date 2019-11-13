@@ -87,6 +87,7 @@ def get_rotated_index(nums, left, right):
     # way of knowing if we should search left or right
   while left < right:
       mid = left + (right - left) // 2
+      
       if nums[mid] > nums[right]:
         # this tells us that the smallest will be on the right side of the array
           left = mid + 1
