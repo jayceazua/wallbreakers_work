@@ -33,6 +33,10 @@ def rewardFromStartingHere(index, arr):
     return max(path_one, path_two)
 
 # O(n)
+
+# bottom up processing
+# make a dynamic programming array
+
 def memoizedRob(arr):
     results = []  # we will append results as they come in
 
