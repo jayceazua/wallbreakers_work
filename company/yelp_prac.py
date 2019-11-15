@@ -86,7 +86,8 @@ def solution(waitlist, capacity):
   # sort the input waitlist by the time key in descending order
   # clarifying edge case: what happens when the times are a tie, and the size of th party is the same?
   parties = sorted(waitlist, key = lambda party: (-party["time"]))
-
+  next_party = 0
+  
   for index, party in enumerate(parties):  # O(n) time
 
     # smaller restaurants
