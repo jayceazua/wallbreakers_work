@@ -26,7 +26,7 @@ Sample waitlist data:
 Part 2
 Some restaurants are small and only want to seat a party if their size exactly matches the size of the table.
 Larger restaurants want to seat the first party from the waitlist whose size is less than or equal to the table.
-Regardless of the restaurant size, if a party has waited more than 30 minutes and a table opens ip that can fit them
+Regardless of the restaurant size, if a party has waited more than 30 minutes and a table opens up that can fit them
 we seat that party.
 
 
@@ -45,12 +45,65 @@ waitlist = [{
     "time": 100
 },
     {
-    "size": 4,
+    "size": 3,
     "name": "Darwin Dog",
     "time": 200
+},
+{
+    "size": 5,
+    "name": "Fisky Fish",
+    "time": 500
+},
+{
+    "size": 5,
+    "name": "Busy Bee",
+    "time": 1810
+},
+{
+    "size": 4,
+    "name": "Alpha Ant",
+    "time": 1800
 }]
 
 capacity = 4
 
+
+
+"""
+from collections import OrderedDict
+
+[ "Busy Bee" : {
+    "size": 5,
+    "time": 1810
+},
+  "Alpha Ant": {
+    "size": 4,
+    "time": 1800
+}]
+"""
+
 def solution(waitlist, capacity):
-  pass
+  # sort the input waitlist by the time key in descending order
+  # clarifying edge case: what happens when the times are a tie, and the size of th party is the same?
+  parties = sorted(waitlist, key = lambda party: (-party["time"]))
+
+  for index, party in enumerate(parties):  # O(n) time
+
+    # smaller restaurants
+    if party["size"] ==  capacity:
+      next_seated = parties.pop(index)
+      print(next_seated["name"])
+
+    # larger restaurants
+    if party["size"] <= capacity:
+
+      next_seated = parties.pop(index)  # O(n)
+
+
+      # del 
+      print(next_seated['name']) # O(1) space
+      break
+  
+
+
+solution(waitlist, capacity)
