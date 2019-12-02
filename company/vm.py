@@ -43,5 +43,6 @@ def compress_string(s):
 
   return s
   
-print(compress_string(''))
+
+print(compress_string('a12c9b56c1'))
 
