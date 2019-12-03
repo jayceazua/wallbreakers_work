@@ -2,8 +2,7 @@
 Compress String
 
 input:
-   i j
-  'a 1 2 c 9 b 5 6 c 1'
+  'a12c9b56c1'
 
 output:
   'a12b56c10'
@@ -14,15 +13,15 @@ def compress_string(s):
   if not s:
     return s
   
-  number = ""
+  number = "" # O(n)
   chars = {}
   j = 0
-  for index, char in enumerate(s):
+  for index, char in enumerate(s): # O(n)
 
     if char.isalpha():
       j = index + 1
       # get integer
-      while j < len(s) and not s[j].isalpha():
+      while j < len(s) and not s[j].isalpha(): # O(i)
         number += s[j]
         j += 1
 
