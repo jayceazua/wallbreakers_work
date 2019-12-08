@@ -91,4 +91,20 @@ def get_new_message(matrix):
             s.append(matrix[i][j])
             i += 1
     return "".join(s)  # O(n) runtime and space
-# print(route_cipher("Dumbledore dies.", 4, 4))
+print(route_cipher("Dumbledore dies.", 4, 4))
+
+"""
+"Dumbledore dies."
+r = 4
+c = 4
+
+[
+  [D, u, m, b],
+  [l, e, d, o],
+  [r, e, , d],
+  [i, e, s, .]
+]
+
+"Dlriueeemd sbod."
+
+"""
