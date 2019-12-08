@@ -15,16 +15,7 @@ Example:
 key = "The quick onyx goblin, grabbing his sword, jumps over the lazy dwarf!"
 encrypt("It was all a dream.", key) -> "Od ptw txx t qsutg."
 """
-message1 = "Dumbledore dies."
-r1 = 4
-c1 = 4
-message2 = "Darth Vader was Luke's father."
-r2 = 6
-c2 = 5
-r3 = 5
-c3 = 6
 
-# ====================================================
 class Cipher:
   def __init__(self, key):
     self.cipher = self._alpha_cipher(key)
@@ -36,8 +27,8 @@ class Cipher:
       cipher[chr(ord('A') + index)] = letter
     return cipher
 
-  @classmethod
-  def encrypt(cls, message, key):
+  @staticmethod
+  def encrypt(message, key):
     new_msg = []
     for _, char in enumerate(message):
       if char.isalpha():
@@ -56,7 +47,41 @@ class Cipher:
     
 c = Cipher("THEQUICKONYXGBLRASWDJMPVZF")
 print(c.encrypt("It was all a dream.", c.cipher))
+# ====================================================
 
+"""
+Route Cipher
+
+"Dumbledore dies." -> "Dlriueeemd sbod."
+r = 4
+c = 4
+
+[
+  [D, u, m, b],
+  [l, e, d, o],
+  [r, e, , d],
+  [i, e, s, .]
+]
+
+"Dlriueeemd sbod."
+
+message2 = "Darth Vader was Luke's father." -> D r 'taV Lshrawu etdakfrhesea.
+r2 = 6
+c2 = 5
+D r 'taV Lshrawu etdakfrhesea.
+r3 = 5
+c3 = 6
+DVwkaaaaetrds'hte sehrL r  uf.
+"""
+
+message1 = "Dumbledore dies."
+r1 = 4
+c1 = 4
+message2 = "Darth Vader was Luke's father."
+r2 = 6
+c2 = 5
+r3 = 5
+c3 = 6
 
 def route_cipher(message, r, c):
     if not message:
@@ -95,28 +120,3 @@ def get_new_message(matrix):
             i += 1
     return "".join(s)  # O(n) runtime and space
 
-
-print(route_cipher("Darth Vader was Luke's father.", 5, 6))
-
-"""
-"Dumbledore dies." -> "Dlriueeemd sbod."
-r = 4
-c = 4
-
-[
-  [D, u, m, b],
-  [l, e, d, o],
-  [r, e, , d],
-  [i, e, s, .]
-]
-
-"Dlriueeemd sbod."
-
-message2 = "Darth Vader was Luke's father." -> D r 'taV Lshrawu etdakfrhesea.
-r2 = 6
-c2 = 5
-D r 'taV Lshrawu etdakfrhesea.
-r3 = 5
-c3 = 6
-DVwkaaaaetrds'hte sehrL r  uf.
-"""
