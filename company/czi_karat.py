@@ -32,16 +32,27 @@ class Cipher:
   def _alpha_cipher(self, key):
     cipher = {}
     for index, letter in enumerate(key):
-      cipher[letter] = chr(ord('A') + index)
+      cipher[chr(ord('A') + index)] = letter
     return cipher
 
   @classmethod
   def encrypt(cls, message, key):
-    pass
+    new_msg = []
+    for _, char in enumerate(message):
+      if char.isalpha():
+        if char.isupper():
+          new_msg.append(key[char])
+        else:
+          letter = key[char.upper()]
+          new_msg.append(letter.lower())
+      else:
+        new_msg.append(char)
+
+    return "".join(new_msg)
 
     
 c = Cipher("THEQUICKONYXGBLRASWDJMPVZF")
-print(c.cipher)
+print(c.encrypt("It was all a dream.", c.cipher))
 
 
 def route_cipher(message, r, c):
