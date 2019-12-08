@@ -24,12 +24,13 @@ c2 = 5
 r3 = 5
 c3 = 6
 
-
+# ====================================================
 class Cipher:
   def __init__(self, key):
     self.cipher = self._alpha_cipher(key)
-  
-  def _alpha_cipher(self, key):
+
+  @staticmethod
+  def _alpha_cipher(key):
     cipher = {}
     for index, letter in enumerate(key):
       cipher[chr(ord('A') + index)] = letter
@@ -42,9 +43,11 @@ class Cipher:
       if char.isalpha():
         if char.isupper():
           new_msg.append(key[char])
+
         else:
           letter = key[char.upper()]
           new_msg.append(letter.lower())
+
       else:
         new_msg.append(char)
 
@@ -91,10 +94,12 @@ def get_new_message(matrix):
             s.append(matrix[i][j])
             i += 1
     return "".join(s)  # O(n) runtime and space
-print(route_cipher("Dumbledore dies.", 4, 4))
+
+
+print(route_cipher("Darth Vader was Luke's father.", 5, 6))
 
 """
-"Dumbledore dies."
+"Dumbledore dies." -> "Dlriueeemd sbod."
 r = 4
 c = 4
 
@@ -107,4 +112,11 @@ c = 4
 
 "Dlriueeemd sbod."
 
+message2 = "Darth Vader was Luke's father." -> D r 'taV Lshrawu etdakfrhesea.
+r2 = 6
+c2 = 5
+D r 'taV Lshrawu etdakfrhesea.
+r3 = 5
+c3 = 6
+DVwkaaaaetrds'hte sehrL r  uf.
 """
