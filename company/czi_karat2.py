@@ -79,7 +79,6 @@ def get_ancestors(members, pairs):
 
 
 def get_more_ancestors(members):
-
     for member, ancestors in members.items():
         for ancestor in ancestors:
             members[member] = members[member] | members[ancestor]
