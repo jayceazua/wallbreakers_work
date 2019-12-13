@@ -64,7 +64,7 @@ def check_diagonal(matrix, i, j):  # bool
     return True
 
 
-# "t h e w e a t h e r i s n i c e" -> "the weather is nice"
+# "theweatherisnice" -> "the weather is nice"
 # "t h e w e a" -> ""
 
 
@@ -79,13 +79,18 @@ def turn_string_words(s):
     for _, char in enumerate(s): # O(n)
 
         if _is_in_dictionary(word):
-            result.append(word)
-            word = ""
-
+            result.append(word) # O(1)
+            word = "" # O(1)
+        
         word += char # O(n)
 
-    if not word:
+    # last check for the word ...
+    if _is_in_dictionary(word):
+      result.append(word)
+      word = ""
+
+    if word: # if there is still characters
         return ""
 
-    sentence = " ".join(result)
-    return sentence.strip()
+    sentence = " ".join(result) # O(n)
+    return sentence.strip() # O(n)
