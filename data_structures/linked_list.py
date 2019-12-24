@@ -8,7 +8,7 @@ class LinkedList:
         self.size = 0
 
     # inserting a new node
-    def insert_head(self, data):
+    def insert_at_head(self, data):
         """
           Inserting a new node at the head of the linked list is an O(1) operation.
         """
