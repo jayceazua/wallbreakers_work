@@ -5,7 +5,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
         # size of the linked list
-        self.size = 0
+        self.length = 0
 
     # inserting a new node
     def insert_at_head(self, data):
@@ -18,14 +18,7 @@ class LinkedList:
         else:
             new_node.set_next_node(self.head)
             self.head = new_node
-
-        self.size += 1
-
-    def insert_tail(self, data):
-        pass
-
-    def insert_specific(self, data):
-        pass
+        self.length += 1
 
     # deleting a node
     # searching for a node
