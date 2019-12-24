@@ -29,3 +29,23 @@ class LinkedList:
 
     # deleting a node
     # searching for a node
+
+
+
+if __name__ == "__main__":
+  ll = LinkedList()
+  ll.insert_at_head(1)
+  ll.insert_at_head(2)
+  ll.insert_at_head(3)
+  ll.insert_at_head(4)
+  ll.insert_at_head(78)
+  ll.insert_at_head(34)
+  ll.insert_at_head(343)
+  print("The size of the linked list should be 7:", ll.size)
+  result = "head -> "
+  current = ll.head
+  while current:
+    result += f"{ {current.data} } -> "
+    current = current.get_next_node()
+  result += "null"
+  print(result)
