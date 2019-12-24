@@ -42,7 +42,19 @@ class LinkedList:
         self.head = self.head.get_next_node()
         self.length -= 1
 
-    # searching for a node
+    # searching for a specific node
+    def find(self, data):
+      """
+        This method takes O(n) time to search through the linked list.
+        Could be used to eliminate adding duplicates into the linked list.
+      """
+      current = self.head
+
+      while current:
+        if current.get_data() == data:
+          return True
+        current = current.get_next_node()
+      return False
 
 
 if __name__ == "__main__":
@@ -55,6 +67,8 @@ if __name__ == "__main__":
     ll.insert_at_head(6)
     ll.insert_at_head(7)
     ll.delete_head()
+    print(f"Search for 7 in the linked list, is it there? {ll.find(7)}")
+    print(f"Search for 5 in the linked list, is it there? {ll.find(5)}")
     print("The size of the linked list should be 6:", ll.length)
     print(ll)
 
