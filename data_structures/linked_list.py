@@ -13,12 +13,12 @@ class LinkedList:
         return self.__repr__()
 
     def __repr__(self):
-        result = "head -> "
+        result = ""
         current = ll.head
         while current:
             result += f"<- { {current.data} } -> "
             current = current.next
-        result += "<- tail"
+        result += ""
         return result
 
     # inserting a new node at the head
@@ -44,7 +44,7 @@ class LinkedList:
             self.head = new_node
             self.tail = new_node
 
-        if self.tail:
+        elif self.tail:
             self.tail.next = new_node
             new_node.prev = self.tail
             self.tail = new_node
@@ -52,20 +52,23 @@ class LinkedList:
         self.length += 1
 
     def insert(self, data):
-        new_node = Node(data)
+        """
+            This insert method inserts elements in an ascending sorting manner.
+        """
+
         if not self.head or self.head.data >= data:
             self.insert_at_head(data)
         elif self.tail.data <= data:
             self.insert_at_tail(data)
         else:
+            new_node = Node(data)
             current = self.head
             self.length += 1
             while current.next:
                 if current.next.data >= data:
                     # insert at the current position
-                    new_node.next = current.next
-                    new_node.prev = current
-                    current.next = new_node
+                    current.next.prev, new_node.next = new_node, current.next
+                    new_node.prev, current.next = current, new_node
                     break
                 current = current.next
 
@@ -98,15 +101,23 @@ class LinkedList:
 if __name__ == "__main__":
     ll = LinkedList()
 
-    ll.insert(3)
-    ll.insert(5)
-    ll.insert(7)
+    ll.insert(1)
     ll.insert(2)
     ll.insert(4)
+    ll.insert(5)
+    ll.insert(7)
     ll.insert(8)
+    ll.insert(3)
+    ll.insert(9)
+    ll.insert(0)
     ll.insert(6)
-    ll.insert(1)
     print(f"Search for 7 in the linked list, is it there? {ll.find(7)}")
     print(f"Search for 5 in the linked list, is it there? {ll.find(5)}")
     print("The size of the linked list should be 6:", ll.length)
     print(ll)
+
+    # need to fix the previous pointer
+    current = ll.tail
+    while current:
+        print(f"<- { {current.data} } ->", end=" ")
+        current = current.prev
