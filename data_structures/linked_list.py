@@ -100,23 +100,22 @@ class LinkedList:
 
 if __name__ == "__main__":
     ll = LinkedList()
-
-    ll.insert(1)
-    ll.insert(2)
-    ll.insert(4)
-    ll.insert(5)
-    ll.insert(7)
     ll.insert(8)
+    ll.insert(1)
+    ll.insert(7)
+    ll.insert(5)
+    ll.insert(2)
     ll.insert(3)
     ll.insert(9)
     ll.insert(0)
     ll.insert(6)
+    ll.insert(4)
     print(f"Search for 7 in the linked list, is it there? {ll.find(7)}")
     print(f"Search for 5 in the linked list, is it there? {ll.find(5)}")
     print("The size of the linked list should be 6:", ll.length)
     print(ll)
 
-    # need to fix the previous pointer
+    # reversed.
     current = ll.tail
     while current:
         print(f"<- { {current.data} } ->", end=" ")
