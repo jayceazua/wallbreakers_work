@@ -17,7 +17,7 @@ class LinkedList:
         current = ll.head
         while current:
             result += f"<- { {current.data} } -> "
-            current = current.get_next_node()
+            current = current.next
         result += "<- tail"
         return result
 
@@ -36,21 +36,20 @@ class LinkedList:
             self.head = new_node
         self.length += 1
 
+    # inserting a new node at the tail
     def insert_at_tail(self, data):
-      new_node = Node(data)
+        new_node = Node(data)
 
-      if not self.head:
-        self.head = new_node
-        self.tail = new_node
-      
-      if self.tail:
-        self.tail.next = new_node
-        new_node.prev = self.tail
-        self.tail = new_node
-      self.length += 1
+        if not self.head:
+            self.head = new_node
+            self.tail = new_node
 
+        if self.tail:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
 
-
+        self.length += 1
 
     # deleting a node at the head
     def delete_head(self):
@@ -59,7 +58,7 @@ class LinkedList:
             It is good to note that by simply referencing to the old head's next node it delete its, 
               and it gets picked up by the language's garbage collector.
         """
-        self.head = self.head.get_next_node()
+        self.head = self.head.next
         self.length -= 1
 
     # searching for a specific node
@@ -71,21 +70,21 @@ class LinkedList:
         current = self.head
 
         while current:
-            if current.get_data() == data:
+            if current.data == data:
                 return True
-            current = current.get_next_node()
+            current = current.next
         return False
 
 
 if __name__ == "__main__":
     ll = LinkedList()
-    ll.insert_at_head(1)
-    ll.insert_at_head(2)
-    ll.insert_at_head(3)
-    ll.insert_at_head(4)
-    ll.insert_at_head(5)
-    ll.insert_at_head(6)
-    ll.insert_at_head(7)
+    ll.insert_at_tail(1)
+    ll.insert_at_tail(2)
+    ll.insert_at_tail(3)
+    ll.insert_at_tail(4)
+    ll.insert_at_tail(5)
+    ll.insert_at_tail(6)
+    ll.insert_at_tail(7)
     ll.delete_head()
     print(f"Search for 7 in the linked list, is it there? {ll.find(7)}")
     print(f"Search for 5 in the linked list, is it there? {ll.find(5)}")
