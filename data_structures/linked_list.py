@@ -51,7 +51,26 @@ class LinkedList:
 
         self.length += 1
 
+    def insert(self, data):
+        new_node = Node(data)
+        if not self.head or self.head.data >= data:
+            self.insert_at_head(data)
+        elif self.tail.data <= data:
+            self.insert_at_tail(data)
+        else:
+            current = self.head
+            self.length += 1
+            while current.next:
+                if current.next.data >= data:
+                    # insert at the current position
+                    new_node.next = current.next
+                    new_node.prev = current
+                    current.next = new_node
+                    break
+                current = current.next
+
     # deleting a node at the head
+
     def delete_head(self):
         """
           Deleting a node from the head of the linked list is an O(1) operation.
@@ -78,14 +97,15 @@ class LinkedList:
 
 if __name__ == "__main__":
     ll = LinkedList()
-    ll.insert_at_tail(1)
-    ll.insert_at_tail(2)
-    ll.insert_at_tail(3)
-    ll.insert_at_tail(4)
-    ll.insert_at_tail(5)
-    ll.insert_at_tail(6)
-    ll.insert_at_tail(7)
-    ll.delete_head()
+
+    ll.insert(3)
+    ll.insert(5)
+    ll.insert(7)
+    ll.insert(2)
+    ll.insert(4)
+    ll.insert(8)
+    ll.insert(6)
+    ll.insert(1)
     print(f"Search for 7 in the linked list, is it there? {ll.find(7)}")
     print(f"Search for 5 in the linked list, is it there? {ll.find(5)}")
     print("The size of the linked list should be 6:", ll.length)
