@@ -34,7 +34,7 @@ Enjoy your interview!
 
 def isToeplitz(matrix):  # O(n * m)
 
-    rows = len(matrix)  # n O(1)
+    rows = len(matrix)  # n 
     cols = len(matrix[0])  # m
 
     for col in range(cols):

@@ -77,7 +77,7 @@ class BST:
         if not current:
             return
 
-        # Case 1
+        # Case 1 - is a leaf
         if not current.left and not current.right:
             if current == self.root:
                 self.root == None
@@ -86,7 +86,7 @@ class BST:
                     parent.left = None
                 else:
                     parent.right = None
-        # Case 2
+        # Case 2 - has one child
         elif not current.right:
             if current == self.root:
                 self.root = self.root.left
@@ -102,9 +102,19 @@ class BST:
                 parent.left = current.right
             else:
                 parent.right = current.right
-        # Case 3
+        # Case 3 - has two children
+            # find the node that is greater than the node to be deleted
+            # but less than the greater node
+            # find the successor node which is to the right of the node to be deleted but less than that node
+            # bring the successor to the current node to be deleted,
+            # make the left child of current node the left child of the successor node
+            # then the right child of the current node is the right child of the successor node
+            # then break the connection of the successor's parent
+            # the current node's parent connection needs to connect to the current node's parent.
+            # if the successor has a right child then the parent of the successor's left child becomes their left child...
 
     # in-order
+
     def in_order(self):
         pass
     # post-order
@@ -123,3 +133,19 @@ class BST:
 
     def height(self):
         pass
+
+    def smallest_value(self):
+        current = self.root
+        if current:
+            while True:
+                if not current.left:
+                    return current.data
+                current = current.left
+
+    def largest_value(self):
+        current = self.root
+        if current:
+            while True:
+                if not current.right:
+                    return current.data
+                current = current.right
