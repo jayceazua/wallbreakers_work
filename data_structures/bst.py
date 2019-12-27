@@ -108,3 +108,4 @@ class BST:
   # post-order
   # pre-order
   # level-order
+  # height
