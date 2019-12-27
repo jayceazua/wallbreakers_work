@@ -4,7 +4,6 @@ from bst_node import Node
 class BST:
     def __init__(self):
         self.root = None
-
   # insert
     def insert(self, data):
         def insert_node(data, current):
@@ -24,10 +23,7 @@ class BST:
             self.root = Node(data)
         else:
             insert_node(data, self.root)
-
-  # delete
   # search
-
     def find(self, data):
         def search(data, current):
             if data == current.data:
@@ -40,9 +36,9 @@ class BST:
                 return search(data, current.right)
             # if nothing is round
             return None
-
         return search(data, self.root)
 
+  # delete
   # in-order
   # post-order
   # pre-order
