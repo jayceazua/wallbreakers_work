@@ -104,8 +104,22 @@ class BST:
                 parent.right = current.right
         # Case 3
 
-  # in-order
-  # post-order
-  # pre-order
-  # level-order
-  # height
+    # in-order
+    def in_order(self):
+        pass
+    # post-order
+
+    def post_order(self):
+        pass
+    # pre-order
+
+    def pre_order(self):
+        pass
+    # level-order
+
+    def level_order(self):
+        pass
+    # height
+
+    def height(self):
+        pass
