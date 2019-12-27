@@ -172,6 +172,9 @@ class BST:
     # level-order
 
     def level_order(self):
+        """
+        Breadth-first search
+        """
         current = self.root
 
         if not current:
