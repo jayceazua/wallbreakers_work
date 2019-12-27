@@ -1,3 +1,5 @@
+from bst_node import Node
+
 class BST:
     def __init__(self):
         self.root = None
