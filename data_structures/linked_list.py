@@ -73,17 +73,26 @@ class LinkedList:
                 current = current.next
 
     # deleting a node at the head
-
     def delete_head(self):
         """
           Deleting a node from the head of the linked list is an O(1) operation.
             It is good to note that by simply referencing to the old head's next node it delete its, 
               and it gets picked up by the language's garbage collector.
         """
+        item = self.head
         self.head = self.head.next
         self.length -= 1
+        return item.data
+    # delete tail
+
+    def delete_tail(self):
+        item = self.tail
+        self.tail = self.tail.prev
+        self.length -= 1
+        return item.data
 
     # searching for a specific node
+
     def find(self, data):
         """
           This method takes O(n) time to search through the linked list.
