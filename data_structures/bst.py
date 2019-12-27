@@ -116,19 +116,76 @@ class BST:
     # in-order
 
     def in_order(self):
-        pass
+        """
+        Depth-first search
+        1. traverse the left sub-tree
+        2. visit the root
+        3. traverse the right sub-tree
+        """
+        def order(current):
+            if not current:
+                return
+            if current.left:
+                return order(current.left)
+            print(current.data, end=" ")
+            if current.right:
+                return order(current.right)
+
+        order(self.root)
+
     # post-order
 
     def post_order(self):
-        pass
+        """
+        Depth-first search
+        1. traverse the left
+        2. traverse the right
+        3. visit the root
+        """
+        def order(current):
+            if not current:
+                return
+            if current.left:
+                return order(current.left)
+            if current.right:
+                return order(current.right)
+            print(current.data, end=" ")
+        order(self.root)
     # pre-order
 
     def pre_order(self):
-        pass
+        """
+        Depth-first search
+        1. visit the root
+        2. traverse the left
+        3. traverse the right
+        """
+        def order(current):
+            if not current:
+                return
+            print(current.data, end=" ")
+            if current.left:
+                return order(current.left)
+            if current.right:
+                return order(current.right)
+        order(self.root)
     # level-order
 
     def level_order(self):
-        pass
+        current = self.root
+
+        if not current:
+            return
+
+        q = [current]
+
+        while q:
+            current = q.pop(0)
+            print(current.data, end=" ")
+            if current.left:
+                q.append(current.left)
+            if current.right:
+                q.append(current.right)
     # height
 
     def height(self):
