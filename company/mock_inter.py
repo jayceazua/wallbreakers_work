@@ -51,19 +51,23 @@ def nextGreaterElement(lst):
             result[i] = stack[-1]
         stack.append(lst[i])
     return result
-"""
-The outer for loop begins from the end of lst. 
-In each iteration, the top of the stack is compared with the current element in lst. 
-Whenever the current value in lst is larger than top, that value is the next greater element in the list.
 
-The top is popped and the current element in the list is again compared with the new top of the stack in the inner while loop. This loop stops when the top of the stack is bigger than the element of the list or the stack becomes empty.
 
-If the stack is empty, it implies that the current element in lst does not have a next greater element. Hence, its corresponding index in res would retain the value of -1.
+exp = "942+∗6147/+∗"
 
-If the stack is not empty, then the current element has a value larger than it. Hence, the top value will be assigned to the corresponding index in res.
+def evalu(exp):
+  stack = []
 
-Continuing this process, we end up with a list containing all the next greater elements for all indices of lst.
+  for char in exp:
+    if char.isdigit():
+      stack.append(char)
+    else:
+      left = stack.pop()
+      right = stack.pop()
 
-Time Complexity #
-Since we make one iteration over the list of n elements, the algorithm will work in O(n). This is a significant improvement over the brute force method’s runtime complexity of O(n2).
-"""
+      val = eval(str(f"{right}{char}{left}"))
+      stack.append(val)
+  return int(stack[-1])
+
+
+print(evalu(exp))
