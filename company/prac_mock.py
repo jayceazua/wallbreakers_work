@@ -14,6 +14,8 @@ Input:
 Output:
   [["Boston", "Texas"], ["Texas", "Missouri"] , ["Missouri", "NewYork"] , ["NewYork", "Chicago"]]
 """
+
+
 def trace_path(my_dict):  # A Map object
     # Write your code here
     start = _find_start_ctty(my_dict)
@@ -21,11 +23,9 @@ def trace_path(my_dict):  # A Map object
     n = len(my_dict)
     # destination = start
     while n:
-      
       results.append([start, my_dict[start]])
       start = my_dict[start]
       n -= 1
-
     return results
 
 
@@ -38,5 +38,5 @@ def _find_start_ctty(dic):
             return key
 
 
-print(trace_path(dic))
+
 
