@@ -30,3 +30,28 @@ class HashTable:
 
     def is_empty(self):
         return self.get_size() == 0
+
+    def resize(self):
+        new_slots = self.slots * 2
+        new_bucket = [None] * new_slots
+        # rehash all items into new slots
+        for i in range(0, len(self.bucket)):
+            head = self.bucket[i]
+            while head != None:
+                new_index = self.get_index(head.key)
+                if new_bucket[new_index] == None:
+                    new_bucket[new_index] = HashEntry(head.key, head.value)
+                else:
+                    node = new_bucket[new_index]
+                    while node != None:
+                        if node.key == head.key:
+                            node.value = head.value
+                            node = None
+                        elif node.next == None:
+                            node.next = HashEntry(head.key, head.value)
+                            node = None
+                        else:
+                            node = node.next
+                head = head.next
+        self.bucket = new_bucket
+        self.slots = new_slots
