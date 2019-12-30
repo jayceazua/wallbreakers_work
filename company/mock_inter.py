@@ -53,21 +53,3 @@ def nextGreaterElement(lst):
     return result
 
 
-exp = "942+∗6147/+∗"
-
-def evalu(exp):
-  stack = []
-
-  for char in exp:
-    if char.isdigit():
-      stack.append(char)
-    else:
-      left = stack.pop()
-      right = stack.pop()
-
-      val = eval(str(f"{right}{char}{left}"))
-      stack.append(val)
-  return int(stack[-1])
-
-
-print(evalu(exp))
