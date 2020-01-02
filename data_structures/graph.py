@@ -42,28 +42,45 @@ class Graph:
         visited[source] = True
 
         while q:
-          current_node = q.pop(0)
-          result.append(str(current_node))
-          current_node = self.array[current_node].head
+            current_node = q.pop(0)
+            result.append(str(current_node))
+            current_node = self.array[current_node].head
 
-          # linked list traversal adding it to the queue
-          while current_node:
-
-            if not visited[current_node.data]:
-              q.append(current_node.data)
-              visited[current_node.data] = True
-            # go to the next node
-            current_node = current_node.next
-
+            # linked list traversal adding it to the queue
+            while current_node:
+                if not visited[current_node.data]:
+                    q.append(current_node.data)
+                    visited[current_node.data] = True
+                # go to the next node
+                current_node = current_node.next
         return "".join(result)  # O(n)
+
+    def dfs_traversal(self, source):
+        result = []
+        num_vertices = self.vertices
+        visited = [False] * num_vertices
+        s = []
+        s.append(source)
+        visited[source] = True
+
+        while s:
+            current_node = s.pop()
+            result.append(str(current_node))
+            current_node = self.array[current_node].head
+
+            while current_node:
+                if not visited[current_node.data]:
+                    s.append(current_node.data)
+                    visited[current_node.data] = True
+                current_node = current_node.next
+        return "".join(result)
 
 
 if __name__ == "__main__":
-    g = Graph(4)
-    g.add_edge(0, 1)
-    g.add_edge(0, 2)
+    g = Graph(7)
+    g.add_edge(1, 2)
     g.add_edge(1, 3)
-    g.add_edge(2, 3)
-    print(g.bfs_traversal(0))
-
-    
+    g.add_edge(2, 4)
+    g.add_edge(2, 5)
+    g.add_edge(3, 6)
+    print(g.dfs_traversal(1))
