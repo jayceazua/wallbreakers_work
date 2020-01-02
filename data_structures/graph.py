@@ -8,8 +8,6 @@ class Graph:
         self.vertices = vertices
         # Defining a list which can hold multiple LinkedLists equal to the number of vertices in the graph
         self.array = []
-        # adjacency matrix
-        self.matrix = [[0]]*self.vertices
         # Creating a new LinkedList for each vertex/index of the list
         for vertex in range(vertices):
             temp = LinkedList()
@@ -81,12 +79,47 @@ class Graph:
                 current_node = current_node.next
         return "".join(result)
 
+    def detect_cycle(self):
+        # keeps track of all the vertices that have been visited
+        visited = [False]*self.vertices
+        # nodes in the current recursive call
+        current_visited = [False]*self.vertices
+        for vertex in range(self.vertices):
+            # perform a DFS
+            if self._detect_cycle_rec(vertex, visited, current_visited):
+                return True
+
+        return False
+
+    def _detect_cycle_rec(self, vertex, visited, current_visited):
+        if current_visited[vertex]:  # cycle has been found
+            return True
+
+        if visited[vertex]:  # it has been visited before
+            return False
+
+        visited[vertex] = True  # mark as visited
+        current_visited[vertex] = True  # add to recursion stack
+        head_vertex = self.array[vertex].head
+        while head_vertex:
+            adjacent = head_vertex.data
+            if self._detect_cycle_rec(adjacent, visited, current_visited):
+                return True  # cycle is found
+            head_vertex = head_vertex.next
+        # remove the node from the recursive stack
+        current_visited[vertex] = False
+        return False
+
 
 if __name__ == "__main__":
-    g = Graph(7)
-    g.add_edge(1, 2)
-    g.add_edge(1, 3)
-    g.add_edge(2, 4)
-    g.add_edge(2, 5)
-    g.add_edge(3, 6)
-    print(g.dfs_traversal(1))
+    g1 = Graph(4)
+    g1.add_edge(0, 1)
+    g1.add_edge(1, 2)
+    g1.add_edge(1, 3)
+    g1.add_edge(3, 0)
+    g2 = Graph(3)
+    g2.add_edge(0, 1)
+    g2.add_edge(1, 2)
+
+    print(g1.detect_cycle())
+    print(g2.detect_cycle())
