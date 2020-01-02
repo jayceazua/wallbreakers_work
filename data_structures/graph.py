@@ -33,6 +33,9 @@ class Graph:
             print("None")
 
     def bfs_traversal(self, source):
+        """
+        Time complexity: O(V + E)
+        """
         result = []
         num_vertices = self.vertices
         visited = [False] * num_vertices
@@ -56,6 +59,9 @@ class Graph:
         return "".join(result)  # O(n)
 
     def dfs_traversal(self, source):
+        """
+        Time complexity: O(V + E)
+        """
         result = []
         num_vertices = self.vertices
         visited = [False] * num_vertices
