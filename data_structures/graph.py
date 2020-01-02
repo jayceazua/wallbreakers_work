@@ -84,29 +84,31 @@ class Graph:
         visited = [False]*self.vertices
         # nodes in the current recursive call
         current_visited = [False]*self.vertices
+        # traverse through each vertex
         for vertex in range(self.vertices):
             # perform a DFS
             if self._detect_cycle_rec(vertex, visited, current_visited):
                 return True
-
         return False
 
     def _detect_cycle_rec(self, vertex, visited, current_visited):
+        # base cases
         if current_visited[vertex]:  # cycle has been found
             return True
-
         if visited[vertex]:  # it has been visited before
             return False
 
         visited[vertex] = True  # mark as visited
-        current_visited[vertex] = True  # add to recursion stack
-        head_vertex = self.array[vertex].head
-        while head_vertex:
-            adjacent = head_vertex.data
-            if self._detect_cycle_rec(adjacent, visited, current_visited):
+        current_visited[vertex] = True  # add to recursion stack as visited
+        current = self.array[vertex].head
+
+        while current:
+            neighbor = current.data
+            # DFS recursive search for a cycle
+            if self._detect_cycle_rec(neighbor, visited, current_visited):
                 return True  # cycle is found
-            head_vertex = head_vertex.next
-        # remove the node from the recursive stack
+            current = current.next
+        # remove the vertex from the recursive stack after we finish the linked list traversal
         current_visited[vertex] = False
         return False
 
