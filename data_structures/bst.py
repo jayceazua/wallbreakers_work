@@ -28,6 +28,8 @@ class BST:
             self.root = Node(data)
         else:
             insert_node(data, self.root)
+
+            
   # search
 
     def find(self, data):
