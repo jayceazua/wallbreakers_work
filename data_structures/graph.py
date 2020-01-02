@@ -35,9 +35,7 @@ class Graph:
     def bfs_traversal(self, source):
         result = []
         num_vertices = self.vertices
-        visited = []
-        for _ in range(num_vertices):
-          visited.append(False)
+        visited = [False] * num_vertices
 
         q = []
         q.append(source)
@@ -46,16 +44,16 @@ class Graph:
         while q:
           current_node = q.pop(0)
           result.append(str(current_node))
-          temp = self.array[current_node].head
+          current_node = self.array[current_node].head
 
           # linked list traversal adding it to the queue
-          while temp:
-            
-            if visited[temp.data] == False:
-              q.append(temp.data)
-              visited[temp.data] = True
+          while current_node:
 
-            temp = temp.next
+            if not visited[current_node.data]:
+              q.append(current_node.data)
+              visited[current_node.data] = True
+            # go to the next node
+            current_node = current_node.next
 
         return "".join(result)  # O(n)
 
