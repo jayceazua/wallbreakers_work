@@ -1,4 +1,5 @@
 from linked_list import LinkedList
+from queue import Queue
 
 
 class Graph:
@@ -7,6 +8,8 @@ class Graph:
         self.vertices = vertices
         # Defining a list which can hold multiple LinkedLists equal to the number of vertices in the graph
         self.array = []
+        # adjacency matrix
+        self.matrix = [[0]]*self.vertices
         # Creating a new LinkedList for each vertex/index of the list
         for vertex in range(vertices):
             temp = LinkedList()
@@ -29,13 +32,40 @@ class Graph:
                 temp = temp.next
             print("None")
 
+    def bfs_traversal(self, source):
+        result = []
+        num_vertices = self.vertices
+        visited = []
+        for _ in range(num_vertices):
+          visited.append(False)
+
+        q = []
+        q.append(source)
+        visited[source] = True
+
+        while q:
+          current_node = q.pop(0)
+          result.append(str(current_node))
+          temp = self.array[current_node].head
+
+          # linked list traversal adding it to the queue
+          while temp:
+            
+            if visited[temp.data] == False:
+              q.append(temp.data)
+              visited[temp.data] = True
+
+            temp = temp.next
+
+        return "".join(result)  # O(n)
+
 
 if __name__ == "__main__":
-  g = Graph(4)
-  g.add_edge(0, 1)
-  g.add_edge(0, 2)
-  g.add_edge(1, 3)
-  g.add_edge(2, 3)
-  g.print_graph()
+    g = Graph(4)
+    g.add_edge(0, 1)
+    g.add_edge(0, 2)
+    g.add_edge(1, 3)
+    g.add_edge(2, 3)
+    print(g.bfs_traversal(0))
 
-  print(g.array[1].head.data)
+    
