@@ -11,43 +11,50 @@ class BST:
         Best case: when binary tree is a completely balanced tree
         O(log n) runtime complexity
         """
-        def insert_node(data, current):
-            if data >= current.data:
-                # right
-                if not current.right:
-                    current.right = Node(data)
-                else:
-                    insert_node(data, current.right)
-            else:
-                # left
-                if not current.left:
-                    current.left = Node(data)
-                else:
-                    insert_node(data, current.left)
-        if not self.root:
-            self.root = Node(data)
+        if self.root:
+            self.root.insert(data)
         else:
-            insert_node(data, self.root)
+            self.root = Node(data)
+        # def insert_node(data, current):
+        #     if data >= current.data:
+        #         # right
+        #         if not current.right:
+        #             current.right = Node(data)
+        #         else:
+        #             insert_node(data, current.right)
+        #     else:
+        #         # left
+        #         if not current.left:
+        #             current.left = Node(data)
+        #         else:
+        #             insert_node(data, current.left)
+        # if not self.root:
+        #     self.root = Node(data)
+        # else:
+        #     insert_node(data, self.root)
 
-            
   # search
 
     def find(self, data):
         """
         O(log n) worse case scenario
         """
-        def search(data, current):
-            if data == current.data:
-                return current.data
-            # move left
-            if current and data < current.data:
-                return search(data, current.left)
-            # move right
-            elif current:
-                return search(data, current.right)
-            # if nothing is round
-            return None
-        return search(data, self.root)
+        if self.root:
+            return self.root.search(data)
+        else:
+            return False
+        # def search(data, current):
+        #     if data == current.data:
+        #         return current.data
+        #     # move left
+        #     if current and data < current.data:
+        #         return search(data, current.left)
+        #     # move right
+        #     elif current:
+        #         return search(data, current.right)
+        #     # if nothing is round
+        #     return None
+        # return search(data, self.root)
 
   # delete
     def delete(self, data):
