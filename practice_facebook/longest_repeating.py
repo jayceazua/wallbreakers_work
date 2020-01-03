@@ -33,6 +33,23 @@ Replace the one 'A' in the middle with 'B' and form "AABBBBA".
 The substring "BBBB" has the longest repeating letters, which is 4.
 """
 
+from collections import defaultdict
+
 
 def characterReplacement(s, k):
-    pass
+    if not s:
+        return 0
+
+    char_counts = defaultdict(int)
+    max_count = float('-inf')
+    start = 0
+
+    for end, char in enumerate(s):
+        char_counts[char] += 1
+        max_count = max(max_count, char_counts[char])
+
+        if end - start + 1 - max_count > k:
+            char_counts[s[start]] -= 1
+            start += 1
+
+    return end - start + 1
