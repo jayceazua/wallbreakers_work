@@ -23,16 +23,17 @@ def valid_palindrome(s):
     j = len(s) - 1
 
     while i <= j:
+        start = s[i]
+        end = s[j]
 
-        if s[i].isalnum() and s[j].isalnum():
-            if s[i].lower() != s[j].lower():
+        if start.isalnum() and end.isalnum():
+            if start != end:
                 return False
             i += 1
             j -= 1
 
-        elif not s[i].isalnum():
+        elif not start.isalnum():
             i += 1
-        elif not s[j].isalnum():
+        elif not end.isalnum():
             j -= 1
-
     return True
