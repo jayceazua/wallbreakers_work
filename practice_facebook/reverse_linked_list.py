@@ -12,20 +12,19 @@ A linked list can be reversed either iteratively or recursively. Could you imple
 
 
 def reverseList(head):
-    #         if head == None or head.next == None:
+    #         if not head or not head.next:
     #             return head
 
-    #         p = self.reverseList(head.next)
+    #         p = reverseList(head.next)
     #         head.next.next = head
     #         head.next = None
     #         return p
+    previous = None  # <- new reversed linked list
+    current = head
 
-    prev = None
-    curr = head
-
-    while curr:
-        next_temp = curr.next
-        curr.next = prev
-        prev = curr
-        curr = next_temp
-    return prev
+    while current:
+        temp = current.next
+        current.next = previous
+        previous = current
+        current = temp
+    return previous
