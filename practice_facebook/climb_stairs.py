@@ -47,9 +47,7 @@ def memo_climb_stairs(n):
         return climb(i + 1, n) + climb(i + 2, n)
     return climb(0, n)
 
-#
-
-
+# dynammic progrmming solution O(n) runtime and space - this removes stack overflow
 def dp_climb_stairs(n):
     if n <= 1:
         return n
