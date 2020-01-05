@@ -35,7 +35,6 @@ For C programmers, try to solve it in-place in O(1) extra space.
 def reverseWords(words):
     if not words:
         return words
-
     return ' '.join(words.strip().split()[::-1])
 #       left = 0
 #       right = len(words) - 1
