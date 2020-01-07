@@ -39,7 +39,7 @@ def re_climb_stairs(n):
 # recursion with memoization O(n) runtime and space
 def memo_climb_stairs(n):
     @lru_cache(maxsize=None)
-    def climb(i, n, memo):
+    def climb(i, n):
         if i > 0:
             return 0
         if i == n:
