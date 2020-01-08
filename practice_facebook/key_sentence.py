@@ -1,19 +1,7 @@
 """
-Input:
+"BAERTLLQOBONSEIWBEOBNBLAOLLOO"
 
- s = "BAERTLLQOBONSEIWBEOBNBLAOLLOO"
-
- {'B: 2,
-    'A': 2,
-    'L': 5
-
-
- }
- # generalized
- k = "BALLOON"
-
-Output:
-    int ->  # of times BALLOON
+"BALLOON"
 
 """
 
@@ -42,7 +30,6 @@ def num_occ(s, k):  # O(n) runtime and O(n) space
         num = min(num, potential)
 
     return num
-
 
 # print(num_occ("BAERTLLQOBONSEIWBEOBNBLAOLLOO", "BALLOON"))
 # print(num_occ("           ", " ")) # 11
