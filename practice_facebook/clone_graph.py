@@ -33,7 +33,7 @@ from copy import deepcopy
 
 
 class Node:
-    def __init__(self, val, neighbors):
+    def __init__(self, val):
         self.val = val
         self.neighbors = neighbors
 
@@ -44,7 +44,7 @@ def cloneGraph(node):
 
     stack = [node]
     visited = {}
-    visited[node] = Node(node.val, [])
+    visited[node] = Node(node.val)
 
     while stack:  # Depth-first search
         current_node = stack.pop()
@@ -52,7 +52,7 @@ def cloneGraph(node):
         for neighbor in current_node.neighbors:  # get all the neighbors of the current node
             if neighbor not in visited:  # check if the neighbor node has been visited before
                 # create a new node with with the neighbor's value
-                visited[neighbor] = Node(neighbor.val, [])
+                visited[neighbor] = Node(neighbor.val)
                 # add to stack
                 # append that neighbor into the stack to later get their neighbors
                 stack.append(neighbor)
