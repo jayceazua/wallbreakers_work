@@ -1,22 +1,22 @@
-from heapq import nlargest
-"""
 # connect levels of binary tree
-#       1                   1              
+#       1                   1
 #      /  \               /  \
 #     2 -> 5             2 -> 5
 #    / \    \           /  \    \
 #   3 ->4     6        3 -> 4 -> 6
+# https: // leetcode.com/problems/populating-next-right-pointers-in-each-node/submissions/
+from heapq import nlargest
+from collections import deque
+
 
 class Node:
     left: Node
     right: Node
     next: Node = None
 
-"""
-from collections import deque
-
 
 def setNext(root: Node) -> None:
+
     if not root:
         return
 
@@ -25,14 +25,15 @@ def setNext(root: Node) -> None:
 
     while queue:
 
-        level = queue  # 5
+        level = queue.copy()  # 5
         queue.clear()
+
         # while queue:
         #     level.append(queue.popleft())
 
         while level:
 
-            current = level.popleft()  # proper way
+            current = level.popleft()  # 2
 
             if level:  # assigns to right sibling
                 current.next = level[0]
@@ -46,12 +47,11 @@ def setNext(root: Node) -> None:
 
 # select kth largest element
 #        [2, 3, 4, 5, 6, 29, 18] -> len(arr) - 1
-            pos = n - k
-
-#               |
+            # pos = n - k
+#               | -> quickSelection
 # list = [2, 3, 6, 18, 29, 4, 5]
 # k = 1, return 18
 
-
+# https://leetcode.com/problems/kth-largest-element-in-an-array/
 def selectKth(list: List[int], k: int) -> int:
-    return heapq.nlargest(k, List)[-1]
+    return nlargest(k, list)[-1]  # O(n log k)
