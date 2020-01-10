@@ -15,8 +15,7 @@ class Node:
     next: Node = None
 
 
-def setNext(root: Node) -> None:
-
+def setNext(root):
     if not root:
         return
 
@@ -53,5 +52,7 @@ def setNext(root: Node) -> None:
 # k = 1, return 18
 
 # https://leetcode.com/problems/kth-largest-element-in-an-array/
-def selectKth(list: List[int], k: int) -> int:
-    return nlargest(k, list)[-1]  # O(n log k)
+
+
+def selectKth(l, k):
+    return nlargest(k, l)[-1]  # O(n log k)
