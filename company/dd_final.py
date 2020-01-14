@@ -96,13 +96,13 @@ max(9, 8) => 9
 min(12, 10)
 
 result = [(9, )]
-'''
-'''
+
 def get_dd_hours(day, city): O(n) + n log n
     something
     
 def get_store_hours(day, store):
     something
+
 def is_open(store):
     dd_hrs = get_dd_hours(today, store.city) <- O(n) runtime/ space
     store_hrs = get_store_hours(today, store) <- O(n) runtime /space
