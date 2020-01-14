@@ -36,13 +36,13 @@ def find_battleship(grid_size):
         coordinates.append((x, y))
         # no point in going left or up since I already went from the upper left corner...
         # move down
-        if (x != grid_size - 2) and bomb_location(x, y+1):
-          coordinates.append((x, y+1))
-          coordinates.append((x, y+2))
+        if (x != grid_size - 2) and bomb_location(x, y + 1):
+          coordinates.append((x, y + 1))
+          coordinates.append((x, y + 2))
         # move right
-        if (y != grid_size - 2) and bomb_location(x+1, y):
-          coordinates.append((x+1, y))
-          coordinates.append((x+2, y))
+        if (y != grid_size - 2) and bomb_location(x + 1, y):
+          coordinates.append((x + 1, y))
+          coordinates.append((x + 2, y))
         return tuple(coordinates)
 
 def bomb_location(x, y):

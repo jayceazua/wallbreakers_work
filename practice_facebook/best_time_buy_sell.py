@@ -1,3 +1,4 @@
+from collections import deque
 """
 Say you have an array for which the ith element is the price of a given stock on day i.
 
@@ -29,3 +30,6 @@ class Solution:
             min_price = min(price, min_price)
             max_profit = max(price - min_price, max_profit)
         return max_profit
+
+
+
