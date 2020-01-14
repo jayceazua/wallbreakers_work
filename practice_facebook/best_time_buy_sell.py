@@ -30,6 +30,3 @@ class Solution:
             min_price = min(price, min_price)
             max_profit = max(price - min_price, max_profit)
         return max_profit
-
-
-
