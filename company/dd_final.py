@@ -8,14 +8,14 @@ C - D
 results = [2, 1, 3, 5]
 no_depend = [4, 5]
                                           i
-Packages =     int nums1 = {1, 2, 3,  4,  5, 5}  
-                                          j
-Dependencies = int nums2 = {3, 3, 5,  4, -1, -1}
+Packages =     int nums1 = {1, 2, 3,  4,  5}  
+                                           j
+Dependencies = int nums2 = {3, 3, 5,  -1, -1}
 
 Num of packages = 10 
 
 
-4 5 3 2 1 6n 7n 8 9 10
+[4 5 3 2 1 6n 7n 8 9 10]
 
 installment - dependencies
 1 - 3
@@ -33,6 +33,10 @@ installment - dependencies
 
 nums1 = [121212121212]
 nums1 = [212121212121]
+
+nums1 = [333333]
+nums2 = [333333]
+
 deadlock situation ... cycle
 
 class Vertex:
@@ -49,17 +53,19 @@ def Graph:
 # dependencies = {3, 3, 5, -1, -1}
 # numOfPackages = 5
 
+from collections import deque
+
 
 def find_installation_path(packages, dependencies, numOfPackages):
     if not packages and not dependencies:
         return []
 
     result = deque()
-    no_depend = []
+    no_depend = []  # no depend
 
-    installed = set()  # check if already installed
+    installed = set()  # (visited nodes) check if already installed - deadlock
 
-    for i in range(len(packages)):
+    for i in range(len(packages)):  # zip function
 
         package = packages[i]
         dependa = dependencies[i]
@@ -80,13 +86,13 @@ def find_installation_path(packages, dependencies, numOfPackages):
     return result.extend(no_depend)  # O(n)
 
 
-'''                    i    
-doordash_hours =   [(9, 12), (14, 17), (21, 23)]
-                                j
-restaurant_hours = [(8, 10), (11, 22)]
-
-     |   | 
-=> [(9, 10), (11, 12), (14, 17), (21, 22)]
+'''
+INPUT:        
+    arr1 = [(9, 12), (14, 17), (21, 23)]               
+    arr2 = [(8, 10), (11, 22)]
+    
+OUTPUT:
+    [(9, 10), (11, 12), (14, 17), (21, 22)]
 
 
 [(9, 12)]
@@ -127,7 +133,7 @@ def sort_inputs(dd, rest):  # O(n + m) runtime
     result = [None]*2  # convert to tuple
 
     while i < len(dd) and j < len(rest):
-        # easier to read- get individual intervals
+        # easier to read - get individual intervals
         interval_dd = dd[i]
         interval_rest = rest[j]
 

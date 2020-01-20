@@ -1,9 +1,9 @@
 # connect levels of binary tree
 #       1                   1
 #      /  \               /  \
-#     2 -> 5             2 -> 5
+#     2    5             2 -> 5
 #    / \    \           /  \    \
-#   3 ->4     6        3 -> 4 -> 6
+#   3   4    6         3 -> 4 -> 6
 # https: // leetcode.com/problems/populating-next-right-pointers-in-each-node/submissions/
 from heapq import nlargest
 from collections import deque
@@ -52,7 +52,6 @@ def setNext(root):
 # k = 1, return 18
 
 # https://leetcode.com/problems/kth-largest-element-in-an-array/
-
 
 def selectKth(l, k):
     return nlargest(k, l)[-1]  # O(n log k)
