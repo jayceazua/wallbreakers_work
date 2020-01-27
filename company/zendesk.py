@@ -44,6 +44,7 @@ class Cipher:
         """
 
         cipher = {}
+        cipher2 = {}
         alpha = list("abcdefghijklmnopqrstuvwxyz")
         alpha1 = list("abcdefghijklmnopqrstuvwxyz")
 
@@ -57,12 +58,13 @@ class Cipher:
 
         for char1, char2 in zip(alpha1, new_alpha):
             cipher[char1] = char2
+            cipher2[char2] = char1
 
-        return cipher
+        return cipher, cipher2
 
     def encrypt(self, key, message):
         new_msg = []
-        key = self._new_alpha(key)  # dictionary
+        key = self._new_alpha(key)[0]  # dictionary
 
         for _, char in enumerate(message):
             if char.isalpha():
@@ -74,9 +76,20 @@ class Cipher:
         return "".join(new_msg)
 
     def decrypt(self, key, msg):
-        pass
+        new_msg = []
+        key = self._new_alpha(key)[1]  # dictionary
+
+        for _, char in enumerate(message):
+            if char.isalpha():
+                new_msg.append(key[char])
+
+            else:
+                new_msg.append(char)
+
+        return "".join(new_msg)
 
 
 c = Cipher()
 print(c.encrypt("things", "these are some words") == "rbgqg tpg qljg wlpnq")
 print(c.encrypt("", "these are some words") == "these are some words")
+print(c.encrypt("things", "rbgqg tpg qljg wlpnq") == "these are some words")
