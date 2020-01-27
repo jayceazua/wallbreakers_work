@@ -79,7 +79,7 @@ class Cipher:
         new_msg = []
         key = self._new_alpha(key)[1]  # dictionary
 
-        for _, char in enumerate(message):
+        for _, char in enumerate(msg):
             if char.isalpha():
                 new_msg.append(key[char])
 
