@@ -92,4 +92,4 @@ class Cipher:
 c = Cipher()
 print(c.encrypt("things", "these are some words") == "rbgqg tpg qljg wlpnq")
 print(c.encrypt("", "these are some words") == "these are some words")
-print(c.encrypt("things", "rbgqg tpg qljg wlpnq") == "these are some words")
+print(c.decrypt("things", "rbgqg tpg qljg wlpnq") == "these are some words")
