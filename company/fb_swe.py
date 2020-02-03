@@ -1,4 +1,4 @@
-"""Welcome to Facebook!
+"""
 
 This is just a simple shared plaintext pad, with no execution capabilities.
 
@@ -38,8 +38,8 @@ def isToeplitz(matrix):  # O(n * m)
         return True
     rows_length = len(matrix)
 
-    for i in range(1, rows_length): # O(n)
-        for j in range(1, matrix[i]): #O(m)
+    for i in range(1, rows_length):  # O(n)
+        for j in range(1, matrix[i]):  # O(m)
             # compare to the top left neighbor
             if matrix[i][j] != matrix[i-1][j-1]:
                 return False
