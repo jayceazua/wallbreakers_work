@@ -17,17 +17,25 @@ Output:
 """
 
 
-def buildTree(preorder, inorder):
-    # base case
-    if not inorder:
-        return
+class TreeNode:
+  def __init__(self, val):
+    self.val = val
+    self.right = None
+    self.left = None
+    
 
-    # could use deque for O(1) operation on popping left
-    index = inorder.index(preorder.pop(0))
-    root = TreeNode(inorder[index])  # get the value
-    # left branch -
-    root.left = self.buildTree(preorder, inorder[0: index])
-    # right branch -
-    root.right = self.buildTree(preorder, inorder[index + 1:])
-    # once we break the problem down to the smallest form we return that root node
-    return root
+
+  def buildTree(preorder, inorder):
+      # base case
+      if not inorder:
+          return
+
+      # could use deque for O(1) operation on popping left
+      index = inorder.index(preorder.pop(0))
+      root = TreeNode(inorder[index])  # get the value
+      # left branch -
+      root.left = self.buildTree(preorder, inorder[0: index])
+      # right branch -
+      root.right = self.buildTree(preorder, inorder[index + 1:])
+      # once we break the problem down to the smallest form we return that root node
+      return root

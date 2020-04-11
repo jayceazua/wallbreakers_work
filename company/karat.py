@@ -1,5 +1,6 @@
 """
-Given a board and an end position for the player, write a function to determine if it is possible to travel from every open cell on the board to the given end position.
+Given a board and an end position for the player, 
+write a function to determine if it is possible to travel from every open cell on the board to the given end position.
 
 board1 = [
     [ 0,  0,  0, 0, -1 ],

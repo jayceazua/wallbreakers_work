@@ -28,8 +28,7 @@ def opt_move_zeros(nums):  # O(n) runtime; O(z + nz) space
             non_zeros.append(num)
 
     nums[:] = zeros + non_zeros
-    del zeros
-    del non_zeros
+
 
 
 def br_move_zeros(nums):  # O(n^2) - squared; power of 2

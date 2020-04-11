@@ -22,8 +22,8 @@ from collections import Counter
 
 class Solution:
     def numJewelsInStones(self, J: str, S: str) -> int:
-        jewels = Counter(J) # O(n)
-        stones = Counter(S) # O(n)
+        jewels = Counter(J) # O(n)<- histogram
+        stones = Counter(S) # O(n) < -histrogram
         count = 0
 
         for jewel in jewels: # O(k)

@@ -15,11 +15,11 @@ def dailyTemperatures(T):
     if not T:
         return
 
-    days = [0]*len(T)
+    days = [0] * len(T)
     temps_stack = []
 
     for current_day, current_temp in enumerate(T):
-        while temps and temps_stack[-1][0] < current_temp:
+        while temps_stack and temps_stack[-1][0] < current_temp:
             _, day = temps_stack.pop()
             days[day] = current_day - day
 

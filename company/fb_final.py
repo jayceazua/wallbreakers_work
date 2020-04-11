@@ -1,9 +1,10 @@
-# connect levels of binary tree
+"""# connect levels of binary tree
 #       1                   1
 #      /  \               /  \
 #     2    5             2 -> 5
 #    / \    \           /  \    \
 #   3   4    6         3 -> 4 -> 6
+"""
 # https: // leetcode.com/problems/populating-next-right-pointers-in-each-node/submissions/
 from heapq import nlargest
 from collections import deque
