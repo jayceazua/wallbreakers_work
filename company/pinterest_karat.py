@@ -42,30 +42,34 @@ string6 = "breadmaking"
 
 def find_embedded_word(words, string):
 
-  for word in words:
-    # print(word)
-    if found_word(word, string):
-      return word
-
-  return None
+    for word in words:
+        if found_word(word, string):
+            return word
+    return None
 
 
 def found_word(word, string):
-  hist_word = Counter(word)
-  hist_string = Counter(string)
-  hist_word -= hist_string
-  
-  return True if len(hist_word) == 0 else False
+    # hist_word = Counter(word)
+    hist_string = Counter(string)
+    # hist_word -= hist_string
+    # return True if len(hist_word) == 0 else False
 
-  
-  
+    for letter in word:
+        if not hist_string.get(letter):
+            return False
 
+        hist_string[letter] -= 1
+
+        if hist_string[letter] <= 0:
+            del hist_string[letter]
+
+    return True
 
 
 if __name__ == "__main__":
     print(find_embedded_word(words, string1))  # -> cat
     print(find_embedded_word(words, string2))
-    print(find_embedded_word(words, "baykkjl"))
+    print(find_embedded_word(words, string3))
     print(find_embedded_word(words, string4))
     print(find_embedded_word(words, string5))
     print(find_embedded_word(words, string6))
