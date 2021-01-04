@@ -31,7 +31,7 @@ L = maximal string length of each word
 '''
 
 
-words = ['cat', 'baby', 'dog', 'bird', 'car', 'ax']
+words = ['baby', 'dog', 'bird', 'car', 'ax', 'cat']
 string1 = "tcabnihjs"
 string2 = "tbcanihjs"
 string3 = "baykkjl"
@@ -40,27 +40,35 @@ string5 = "ccc"
 string6 = "breadmaking"
 
 
-def find_embedded_word(words, string):
+def find_embedded_word(words, string): # m = words, n = string, k = word
 
-    for word in words:
-        if found_word(word, string):
+    for word in words: # O (m)
+        if found_word(word, string): # helper function -> determines if the word is in the string
             return word
     return None
 
 
 def found_word(word, string):
     # hist_word = Counter(word)
-    hist_string = Counter(string)
+    hist_string = Counter(string) # O(n)
+    """
+    {
+      'a' : 1,
+      'b' : 2,
+      ...
+      n-1 : value
+    }
+    """
     # hist_word -= hist_string
     # return True if len(hist_word) == 0 else False
 
-    for letter in word:
+    for letter in word: # O (k)
         if not hist_string.get(letter):
             return False
 
         hist_string[letter] -= 1
 
-        if hist_string[letter] <= 0:
+        if hist_string[letter] == 0:
             del hist_string[letter]
 
     return True
