@@ -1,3 +1,4 @@
+# Counter automatically converts an iterable into a histogram
 from collections import Counter
 '''
 
@@ -40,42 +41,43 @@ string5 = "ccc"
 string6 = "breadmaking"
 
 
-def find_embedded_word(words, string): # m = words, n = string, k = word
-
-    for word in words: # O (m)
-        if found_word(word, string): # helper function -> determines if the word is in the string
-            return word
+def find_embedded_word(words, string):
+    if not words or not string:
+        return None
+    for word in words:  # O(n)
+        if len(words) < len(string):  # checks if the word's length is greater than the given string
+            # check each word in here if the word is in the given string
+            if is_word_found(word, string):
+                return word
     return None
 
 
-def found_word(word, string):
-    # hist_word = Counter(word)
-    hist_string = Counter(string) # O(n)
-    """
+def is_word_found(word, string):
+    """ 
     {
-      'a' : 1,
-      'b' : 2,
-      ...
-      n-1 : value
+        't': 1,
+        'c': 1,
+        'a': 1,
+        'b': 1,
+        'n': 1,
+        ... n-1
     }
+    histo = {}
+    for letter in string:
+        if letter not in histo:
+            histo[letter] = 1
+        else:
+            histo[letter] += 1
+    return histo
     """
-    # hist_word -= hist_string
-    # return True if len(hist_word) == 0 else False
-
-    for letter in word: # O (k)
-        if not hist_string.get(letter):
-            return False
-
-        hist_string[letter] -= 1
-
-        if hist_string[letter] == 0:
-            del hist_string[letter]
-
-    return True
+    histo_word = Counter(word)
+    histo_string = Counter(string)
+    histo_word -= histo_string
+    return len(histo_word) == 0
 
 
 if __name__ == "__main__":
-    print(find_embedded_word(words, string1))  # -> cat
+    print(find_embedded_word(words, string1))
     print(find_embedded_word(words, string2))
     print(find_embedded_word(words, string3))
     print(find_embedded_word(words, string4))
